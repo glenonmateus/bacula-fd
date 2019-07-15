@@ -1,0 +1,25 @@
+#!/bin/bash
+
+: ${BACULA_FDNAME:="bacula"}
+: ${BACULA_DIRNAME:="bacula"}
+: ${BACULA_MONNAME:="${BACULA_DIRNAME}"}
+: ${BACULA_DEBUG:="50"}
+: ${BACULA_FDPASSWORD:='password'}
+: ${BACULA_MONFDPASSWORD:="${FD_PASSWORD}"}
+
+CONFIGS_VARS=(
+ BACULA_FDNAME
+ BACULA_FDPASSWORD
+ BACULA_DIRNAME
+ BACULA_MONNAME
+)
+
+for c in ${CONFIGS_VARS[@]}; do
+ sed -i "s,@@${c}@@,$(eval echo \$$c)," /etc/bacula/bacula-fd.conf
+done
+
+echo "==> Verifying Bacula FD configuration"
+bacula-fd -t -c /etc/bacula/bacula-fd.conf
+
+echo "==> Starting Bacula FD"
+bacula-fd -f -d ${BACULA_DEBUG} -c /etc/bacula/bacula-fd.conf

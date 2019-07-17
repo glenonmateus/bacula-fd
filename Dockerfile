@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:buster
 
 ENV BACULA_VERSION 9.4.4
 ENV DEBIAN_FRONTEND noninteractive

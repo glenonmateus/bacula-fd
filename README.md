@@ -1,37 +1,37 @@
 # Bacula File Daemon
 
-Serviço File Daemon do Bacula em container. Esse daemon é executado nos clientes para a realização de backup programados pelo Bacula Director.
+Bacula File Daemon container. This daemon runs on clients for Bacula Director scheduled backup.
 
 # Environment
 
-Nenhuma variável é obrigatória pois nelas são atribuídas valores default.
+No variable are required to run the container. All have a default value.
 
 ### BACULA_FDNAME
 
-Nome do File Daemon (default **bacula**)
+File Daemon Name (default **bacula**)
 
 ### BACULA_FDPASSWORD
 
-Password do File Daemon usado pelo Bacula Director (default **password**)
+Bacula File Daemon Password (default **password**)
 
 ### BACULA_DIRNAME
 
-Nome do Director que irá conectar no File Daemon (default **bacula**)
+Bacula Director Name (default **bacula**)
 
 ### BACULA_MONNAME
 
-Nome do Monitor (default **BACULA_DIRNAME-mon**)
+Monitor Name (default **BACULA_DIRNAME-mon**)
 
 ### BACULA_MONFDPASSWORD
 
-Password do Monitor (default **BACULA_FDPASSWORD**)
+Monitor Password (default **BACULA_FDPASSWORD**)
 
 ### BACULA_DEBUG
 
-Nível de debug do serviço do File Daemon (default **50**)
+Bacula File Daemon Debug Level (default **50**)
 
 # Running
 
-Para rodar a image:
+To run the container:
 
 `docker container run --name bacula-fd -e BACULA_FDPASSWORD=senha glenonmateus/bacula-fd`

@@ -8,7 +8,7 @@ No variable are required to run the container. All have a default value.
 
 ### BACULA_FDNAME
 
-File Daemon Name (default **bacula**)
+File Daemon Name (default **bacula-fd**)
 
 ### BACULA_FDPASSWORD
 
@@ -55,9 +55,8 @@ services:
      - 9102:9102
     deploy:
      mode: global
-     replicas: 1
      restart_policy:
-      condition: none
+      condition: on-failure
 
   networks:
     bacula:

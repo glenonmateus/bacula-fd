@@ -35,3 +35,34 @@ Bacula File Daemon Debug Level (default **50**)
 To run the container:
 
 `docker container run --name bacula-fd -e BACULA_FDPASSWORD=password -p 9102:9102 glenonmateus/bacula-fd`
+
+# Docker Compose
+
+```
+version: 3.7
+
+services:
+
+  bacula-fd:
+    image: glenonmateus/bacula-fd
+    volumes:
+     - bacula-fd:/etc/bacula
+    environment:
+     - BACULA_FDPASSWORD=password
+    networks:
+     - bacula
+    ports:
+     - 9102:9102
+    deploy:
+     mode: global
+     replicas: 1
+     restart_policy:
+      condition: none
+
+  networks:
+    bacula:
+
+  volumes:
+    bacula-fd:
+
+```

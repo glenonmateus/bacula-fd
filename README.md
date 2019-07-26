@@ -58,10 +58,10 @@ services:
      restart_policy:
       condition: on-failure
 
-  networks:
-    bacula:
+networks:
+  bacula:
 
-  volumes:
-    bacula-fd:
+volumes:
+  bacula-fd:
 
 ```
